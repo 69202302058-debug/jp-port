@@ -130,9 +130,10 @@
                     <!-- Profile Picture -->
                     <div class="relative shrink-0 group">
                         <div class="w-40 h-48 sm:w-48 sm:h-56 rounded-2xl overflow-hidden border-4 border-zinc-100 shadow-md bg-zinc-100 relative">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" 
+                            <img src="https://raw.githubusercontent.com/69202302058-debug/jp-port/main/profile.jpg" 
                                  alt="ปาริชาติ ประยงค์เพ็ชร" 
-                                 class="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
+                                 class="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
+                                 onerror="if(this.src!=='profile.jpg'){this.src='profile.jpg';}else{this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600';}"
                                  id="profileImage">
                         </div>
                         <div class="absolute -bottom-3 -right-3 bg-zinc-900 text-white px-3 py-1 rounded-full text-xs font-medium tracking-wide shadow-lg">
@@ -497,17 +498,6 @@
                         </p>
                         
                         <div class="space-y-4">
-                            <!-- Phone -->
-                            <a href="tel:0962503934" class="flex items-center gap-4 p-3.5 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 transition-colors border border-zinc-700/50">
-                                <div class="w-10 h-10 rounded-lg bg-zinc-700 flex items-center justify-center text-amber-400">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div>
-                                    <div class="text-xs text-zinc-400">เบอร์โทรศัพท์</div>
-                                    <div class="font-mono text-sm font-semibold">096-250-3934</div>
-                                </div>
-                            </a>
-
                             <!-- Email -->
                             <a href="mailto:prayparic@gmail.com" class="flex items-center gap-4 p-3.5 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 transition-colors border border-zinc-700/50">
                                 <div class="w-10 h-10 rounded-lg bg-zinc-700 flex items-center justify-center text-blue-400">
@@ -608,22 +598,22 @@
 
                 <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
                     <h4 class="font-bold text-zinc-900 mb-1">ขั้นตอนที่ 2: สร้าง Repository บน GitHub</h4>
-                    <p class="text-zinc-600">เข้าเว็บ <a href="https://github.com" target="_blank" class="text-blue-600 underline">GitHub.com</a> &rarr; คลิกปุ่ม <b>New Repository</b> &rarr; ตั้งชื่อเช่น <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">parichat-portfolio</code> &rarr; เลือก Public &rarr; กด <b>Create Repository</b></p>
+                    <p class="text-zinc-600">เข้าเว็บ <a href="https://github.com" target="_blank" class="text-blue-600 underline">GitHub.com</a> &rarr; คลิกปุ่ม <b>New Repository</b> &rarr; ตั้งชื่อเป็น <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">jp-port</code> &rarr; เลือก Public &rarr; กด <b>Create Repository</b></p>
                 </div>
 
                 <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
                     <h4 class="font-bold text-zinc-900 mb-1">ขั้นตอนที่ 3: อัปโหลดไฟล์</h4>
-                    <p class="text-zinc-600">คลิก <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">uploading an existing file</code> &rarr; ลากไฟล์ <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">index.html</code> เข้าไป &rarr; กด <b>Commit Changes</b></p>
+                    <p class="text-zinc-600">ลากไฟล์ <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">index.html</code> และรูปภาพที่ตั้งชื่อว่า <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">profile.jpg</code> เข้าไป &rarr; กด <b>Commit Changes</b></p>
                 </div>
 
                 <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
                     <h4 class="font-bold text-zinc-900 mb-1">ขั้นตอนที่ 4: เปิดใช้งาน GitHub Pages</h4>
-                    <p class="text-zinc-600">ไปที่เมนู <b>Settings</b> ของ Repository &rarr; เลือกหัวข้อ <b>Pages</b> (เมนูด้านซ้าย) &rarr; ตรง <i>Branch</i> ให้เลือกเป็น <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">main</code> หรือ <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">master</code> แล้วกด <b>Save</b></p>
+                    <p class="text-zinc-600">ไปที่เมนู <b>Settings</b> ของ Repository &rarr; เลือกหัวข้อ <b>Pages</b> &rarr; ตรง <i>Branch</i> ให้เลือกเป็น <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">main</code> แล้วกด <b>Save</b></p>
                 </div>
 
                 <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900">
                     <h4 class="font-bold mb-1"><i class="fa-solid fa-circle-check"></i> สำเร็จ!</h4>
-                    <p class="text-xs">รอประมาณ 1-2 นาที คุณจะได้ลิงก์เว็บไซต์ เช่น <code class="font-mono bg-white/70 px-1.5 py-0.5 rounded">https://username.github.io/parichat-portfolio/</code> พร้อมแชร์ให้ผู้อื่นเข้าชมได้ทันที!</p>
+                    <p class="text-xs">รอประมาณ 1-2 นาที เว็บไซต์ของคุณจะออนไลน์ทันทีที่: <br><code class="font-mono bg-white/70 px-1.5 py-0.5 rounded block mt-1">https://69202302058-debug.github.io/jp-port/</code></p>
                 </div>
             </div>
 
