@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ปาริชาติ ประยงค์เพ็ชร (จูน) - Academic Portfolio</title>
+    
+    <!-- Google Fonts: Prompt & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            accent: '#2563eb',
+                            gold: '#d97706'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #fafafa;
+            color: #18181b;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body { background: white !important; color: black !important; }
+            .shadow-custom { box-shadow: none !important; border: 1px solid #e4e4e7 !important; }
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 19px;
+            width: 2px;
+            background: #e4e4e7;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-zinc-800 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-zinc-200/80 transition-all no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-full bg-zinc-900 text-white flex items-center justify-center font-bold text-sm tracking-wider transition-transform group-hover:scale-105">
+                    PJ
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-semibold text-zinc-900 text-sm tracking-tight group-hover:text-zinc-600 transition-colors">PARICHAT P.</span>
+                    <span class="text-[10px] text-zinc-500 uppercase tracking-widest">Academic Portfolio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
+                <a href="#about" class="hover:text-zinc-900 transition-colors">เกี่ยวกับ</a>
+                <a href="#education" class="hover:text-zinc-900 transition-colors">ประวัติการศึกษา</a>
+                <a href="#experience" class="hover:text-zinc-900 transition-colors">ประสบการณ์</a>
+                <a href="#skills" class="hover:text-zinc-900 transition-colors">ความสามารถพิเศษ</a>
+                <a href="#contact" class="hover:text-zinc-900 transition-colors">ติดต่อ</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <button onclick="openGithubGuide()" class="hidden sm:inline-flex items-center gap-2 text-xs px-3.5 py-2 rounded-full border border-zinc-300 hover:border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all text-zinc-700">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    <span>วิธีอัปขึ้น GitHub Pages</span>
+                </button>
+                <button onclick="window.print()" class="inline-flex items-center gap-2 text-xs px-4 py-2 rounded-full bg-zinc-900 hover:bg-zinc-800 text-white transition-all shadow-sm hover:shadow">
+                    <i class="fa-solid fa-print"></i>
+                    <span class="hidden sm:inline">พิมพ์ / Save PDF</span>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-zinc-600 hover:text-zinc-900 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-zinc-200 bg-white/95 backdrop-blur-md px-6 py-4 space-y-3">
+            <a href="#about" class="block text-sm text-zinc-600 hover:text-zinc-900 font-medium">เกี่ยวกับ</a>
+            <a href="#education" class="block text-sm text-zinc-600 hover:text-zinc-900 font-medium">ประวัติการศึกษา</a>
+            <a href="#experience" class="block text-sm text-zinc-600 hover:text-zinc-900 font-medium">ประสบการณ์</a>
+            <a href="#skills" class="block text-sm text-zinc-600 hover:text-zinc-900 font-medium">ความสามารถพิเศษ</a>
+            <a href="#contact" class="block text-sm text-zinc-600 hover:text-zinc-900 font-medium">ติดต่อ</a>
+            <button onclick="openGithubGuide()" class="w-full text-left text-xs py-2 text-blue-600 font-medium flex items-center gap-2">
+                <i class="fa-brands fa-github"></i> คู่มือการติดตั้งบน GitHub Pages
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
+
+        <!-- Hero Section -->
+        <section id="hero" class="mb-16 pt-4">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-zinc-200/80 shadow-sm relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-72 h-72 bg-zinc-100 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+                    <!-- Profile Picture -->
+                    <div class="relative shrink-0 group">
+                        <div class="w-40 h-48 sm:w-48 sm:h-56 rounded-2xl overflow-hidden border-4 border-zinc-100 shadow-md bg-zinc-100 relative">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" 
+                                 alt="ปาริชาติ ประยงค์เพ็ชร" 
+                                 class="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
+                                 id="profileImage">
+                        </div>
+                        <div class="absolute -bottom-3 -right-3 bg-zinc-900 text-white px-3 py-1 rounded-full text-xs font-medium tracking-wide shadow-lg">
+                            <i class="fa-solid fa-sparkles text-amber-400 mr-1"></i> จูน (June)
+                        </div>
+                    </div>
+
+                    <!-- Intro Text -->
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-600 mb-4">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            พร้อมเปิดรับโอกาสและการเรียนรู้ใหม่ๆ
+                        </div>
+
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-2">
+                            ปาริชาติ ประยงค์เพ็ชร
+                        </h1>
+                        <p class="text-zinc-500 text-base sm:text-lg font-light mb-6">
+                            Parichat Prayongphet &bull; นักเรียน/นักศึกษา
+                        </p>
+
+                        <!-- Motto Card -->
+                        <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200/80 mb-6 italic text-zinc-700 text-sm sm:text-base border-l-4 border-l-zinc-900">
+                            "<span class="font-normal">เรียนรู้จากความผิดพลาด เติบโตจากประสบการณ์</span>"
+                        </div>
+
+                        <!-- Quick Badges -->
+                        <div class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3 text-xs text-zinc-600">
+                            <span class="px-3 py-1.5 rounded-lg bg-zinc-100 flex items-center gap-2">
+                                <i class="fa-solid fa-location-dot text-zinc-400"></i> วัฒนานคร, สระแก้ว
+                            </span>
+                            <span class="px-3 py-1.5 rounded-lg bg-zinc-100 flex items-center gap-2">
+                                <i class="fa-solid fa-cake-candles text-zinc-400"></i> 14 กันยายน 2549 (อายุ 20 ปี)
+                            </span>
+                            <span class="px-3 py-1.5 rounded-lg bg-zinc-100 flex items-center gap-2">
+                                <i class="fa-solid fa-droplet text-zinc-400"></i> หมู่เลือด A
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Details Section -->
+        <section id="about" class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center text-sm font-semibold">01</div>
+                <h2 class="text-2xl font-bold text-zinc-900 tracking-tight">ข้อมูลส่วนตัว & ความสนใจ</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Personal Info Details -->
+                <div class="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm space-y-4">
+                    <h3 class="text-base font-semibold text-zinc-900 flex items-center gap-2 border-b border-zinc-100 pb-3">
+                        <i class="fa-regular fa-id-card text-zinc-500"></i> ข้อมูลทั่วไป
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between py-1 border-b border-zinc-50">
+                            <span class="text-zinc-500">ชื่อ-นามสกุล:</span>
+                            <span class="font-medium text-zinc-800">นางสาวปาริชาติ ประยงค์เพ็ชร</span>
+                        </li>
+                        <li class="flex justify-between py-1 border-b border-zinc-50">
+                            <span class="text-zinc-500">ชื่อเล่น:</span>
+                            <span class="font-medium text-zinc-800">จูน</span>
+                        </li>
+                        <li class="flex justify-between py-1 border-b border-zinc-50">
+                            <span class="text-zinc-500">วันเกิด:</span>
+                            <span class="font-medium text-zinc-800">14 กันยายน 2549</span>
+                        </li>
+                        <li class="flex justify-between py-1 border-b border-zinc-50">
+                            <span class="text-zinc-500">สัดส่วน:</span>
+                            <span class="font-medium text-zinc-800">ส่วนสูง 153 ซม. / น้ำหนัก 55 กก.</span>
+                        </li>
+                        <li class="flex justify-between py-1 border-b border-zinc-50">
+                            <span class="text-zinc-500">เชื้อชาติ / ศาสนา:</span>
+                            <span class="font-medium text-zinc-800">ไทย / พุทธ</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hobbies -->
+                <div class="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm space-y-4">
+                    <h3 class="text-base font-semibold text-zinc-900 flex items-center gap-2 border-b border-zinc-100 pb-3">
+                        <i class="fa-solid fa-book-open-reader text-zinc-500"></i> งานอดิเรก (Hobbies)
+                    </h3>
+                    <p class="text-xs text-zinc-500">กิจกรรมที่มักทำเพื่อเพิ่มพูนความรู้และผ่อนคลายความเครียด</p>
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-100 flex items-center gap-3">
+                            <i class="fa-solid fa-book text-zinc-700 text-base"></i>
+                            <span class="text-xs font-medium text-zinc-800">อ่านนิยาย</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-100 flex items-center gap-3">
+                            <i class="fa-solid fa-headphones text-zinc-700 text-base"></i>
+                            <span class="text-xs font-medium text-zinc-800">ฟังเพลง</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-100 flex items-center gap-3">
+                            <i class="fa-solid fa-podcast text-zinc-700 text-base"></i>
+                            <span class="text-xs font-medium text-zinc-800">ฟังพอดแคสต์</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-100 flex items-center gap-3">
+                            <i class="fa-solid fa-broom text-zinc-700 text-base"></i>
+                            <span class="text-xs font-medium text-zinc-800">ทำงานบ้าน</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Activities -->
+                <div class="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm space-y-4">
+                    <h3 class="text-base font-semibold text-zinc-900 flex items-center gap-2 border-b border-zinc-100 pb-3">
+                        <i class="fa-solid fa-heart text-zinc-500"></i> กิจกรรมที่ชอบ (Favorite Activities)
+                    </h3>
+                    <p class="text-xs text-zinc-500">กิจกรรมนันทนาการและการส่งเสริมทักษะความคิดสร้างสรรค์</p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-2 rounded-xl bg-zinc-900 text-white text-xs font-medium flex items-center gap-2">
+                            <i class="fa-solid fa-microphone"></i> ร้องคาราโอเกะ
+                        </span>
+                        <span class="px-3 py-2 rounded-xl bg-zinc-100 text-zinc-800 text-xs font-medium flex items-center gap-2 border border-zinc-200">
+                            <i class="fa-solid fa-camera"></i> ถ่ายรูป
+                        </span>
+                        <span class="px-3 py-2 rounded-xl bg-zinc-100 text-zinc-800 text-xs font-medium flex items-center gap-2 border border-zinc-200">
+                            <i class="fa-solid fa-car"></i> ขับรถ
+                        </span>
+                        <span class="px-3 py-2 rounded-xl bg-zinc-100 text-zinc-800 text-xs font-medium flex items-center gap-2 border border-zinc-200">
+                            <i class="fa-solid fa-pen-nib"></i> เขียนหนังสือ
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center text-sm font-semibold">02</div>
+                <h2 class="text-2xl font-bold text-zinc-900 tracking-tight">ประวัติการศึกษา (Education History)</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-zinc-200/80 shadow-sm">
+                <div class="relative timeline-line pl-6 space-y-8">
+                    
+                    <!-- Senior High School -->
+                    <div class="relative group">
+                        <div class="absolute -left-[31px] top-1.5 w-5 h-5 rounded-full bg-zinc-900 border-4 border-white shadow"></div>
+                        <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-200/80 hover:border-zinc-300 transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="text-lg font-bold text-zinc-900">โรงเรียนอรัญประเทศ</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-zinc-200 text-zinc-700 w-fit">
+                                    ชั้นมัธยมศึกษาปีที่ 4 - 6
+                                </span>
+                            </div>
+                            <p class="text-sm text-zinc-600">
+                                สำเร็จการศึกษาระดับมัธยมศึกษาตอนปลาย มุ่งเน้นการทำกิจกรรมวิชาการ กิจกรรมสตาฟ และพัฒนาทักษะเฉพาะทาง
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Junior High & Primary Upper -->
+                    <div class="relative group">
+                        <div class="absolute -left-[31px] top-1.5 w-5 h-5 rounded-full bg-zinc-300 border-4 border-white"></div>
+                        <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-200/80 hover:border-zinc-300 transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="text-lg font-bold text-zinc-900">โรงเรียนสำเร็จวิทยา</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-zinc-200 text-zinc-700 w-fit">
+                                    ชั้นประถมศึกษาปีที่ 3 - มัธยมศึกษาปีที่ 3
+                                </span>
+                            </div>
+                            <p class="text-sm text-zinc-600">
+                                พัฒนาทักษะพื้นฐานวิชาการ สร้างระเบียบวินัย และเข้าร่วมกิจกรรมการแข่งขันของโรงเรียน
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Primary Lower & Kindergarten -->
+                    <div class="relative group">
+                        <div class="absolute -left-[31px] top-1.5 w-5 h-5 rounded-full bg-zinc-300 border-4 border-white"></div>
+                        <div class="bg-zinc-50 p-5 rounded-2xl border border-zinc-200/80 hover:border-zinc-300 transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="text-lg font-bold text-zinc-900">โรงเรียนช่องกุ่มวิทยา</h3>
+                                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-zinc-200 text-zinc-700 w-fit">
+                                    ชั้นอนุบาล - ประถมศึกษาปีที่ 2
+                                </span>
+                            </div>
+                            <p class="text-sm text-zinc-600">
+                                การศึกษาระดับปฐมวัยและการศึกษาประถมศึกษาตอนต้น
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Activities Section -->
+        <section id="experience" class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center text-sm font-semibold">03</div>
+                <h2 class="text-2xl font-bold text-zinc-900 tracking-tight">ประสบการณ์และกิจกรรมที่เข้าร่วม</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1: Hospital Practical -->
+                <div class="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-hospital-user"></i>
+                            </div>
+                            <span class="text-[11px] font-medium px-2.5 py-1 bg-zinc-100 text-zinc-600 rounded-full">ฝึกประสบการณ์</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-900 mb-2">ฝึกประสบการณ์ ณ โรงพยาบาลอรัญประเทศ</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+                            ได้เรียนรู้การปฏิบัติงานจริงในสถานพยาบาล ฝึกทักษะการประสานงาน การดูแลและให้บริการผู้ป่วย รวมถึงการทำงานร่วมกับทีมงานมืออาชีพ
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-zinc-100 flex items-center text-xs text-zinc-500 gap-1">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i> สถาบันสุขภาพ / โรงพยาบาลอรัญประเทศ
+                    </div>
+                </div>
+
+                <!-- Card 2: Road to Physics Camp -->
+                <div class="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-atom"></i>
+                            </div>
+                            <span class="text-[11px] font-medium px-2.5 py-1 bg-zinc-100 text-zinc-600 rounded-full">พี่เลี้ยงค่าย</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-900 mb-2">พี่เลี้ยงค่าย Road to Physics</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+                            รับหน้าที่เป็นพี่เลี้ยงค่ายดูแลน้องๆ ให้ความรู้ คำแนะนำ และร่วมดำเนินกิจกรรมค่ายฟิสิกส์ สร้างแรงบันดาลใจทางวิทยาศาสตร์
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-zinc-100 flex items-center text-xs text-zinc-500 gap-1">
+                        <i class="fa-solid fa-users text-purple-500"></i> การทำงานเป็นทีม & การนำกิจกรรม
+                    </div>
+                </div>
+
+                <!-- Card 3: Science Day Volunteer -->
+                <div class="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            </div>
+                            <span class="text-[11px] font-medium px-2.5 py-1 bg-zinc-100 text-zinc-600 rounded-full">จิตอาสา</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-900 mb-2">จิตอาสาวันวิทยาศาสตร์</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+                            ช่วยจัดเตรียมสถานที่ นิทรรศการ และถ่ายทอดความรู้ทางวิทยาศาสตร์แก่เด็กๆ เพื่อส่งเสริมการเรียนรู้ของเยาวชนในชุมชน
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-zinc-100 flex items-center text-xs text-zinc-500 gap-1">
+                        <i class="fa-solid fa-heart text-rose-500"></i> บริการสังคม & การถ่ายทอดความรู้
+                    </div>
+                </div>
+
+                <!-- Card 4: Water Rocket Competition Staff -->
+                <div class="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-stopwatch"></i>
+                            </div>
+                            <span class="text-[11px] font-medium px-2.5 py-1 bg-zinc-100 text-zinc-600 rounded-full">ทีมงานสตาฟ</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-zinc-900 mb-2">สตาฟกิจกรรมจรวดขวดน้ำ</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+                            รับผิดชอบการจับเวลาอย่างละเอียด ควบคุมขั้นตอนการแข่งขันให้เป็นไปตามกฎระเบียบ และดูแลความปลอดภัยของผู้แข่งขัน
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-zinc-100 flex items-center text-xs text-zinc-500 gap-1">
+                        <i class="fa-solid fa-clipboard-check text-amber-500"></i> บริหารเวลา & ความแม่นยำ
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Skills Section -->
+        <section id="skills" class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center text-sm font-semibold">04</div>
+                <h2 class="text-2xl font-bold text-zinc-900 tracking-tight">ความสามารถพิเศษ (Special Skills)</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-zinc-200/80 shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Skill 1 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-bold text-zinc-900 flex items-center gap-2">
+                                <i class="fa-solid fa-pen-nib text-zinc-700"></i> ทักษะการเขียนลายอาลักษณ์
+                            </span>
+                            <span class="text-xs font-semibold text-zinc-500">ระดับสูง / เชี่ยวชาญ</span>
+                        </div>
+                        <p class="text-xs text-zinc-500">มีความประณีต อดทน และฝึกฝนการคัดลายมือประดิษฐ์ตามอักขระไทยประยุกต์</p>
+                        <div class="w-full bg-zinc-100 rounded-full h-2 overflow-hidden">
+                            <div class="bg-zinc-900 h-2 rounded-full w-[90%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-bold text-zinc-900 flex items-center gap-2">
+                                <i class="fa-solid fa-lightbulb text-zinc-700"></i> คิดไอเดียและออกแบบผลงาน
+                            </span>
+                            <span class="text-xs font-semibold text-zinc-500">ระดับดีเยี่ยม</span>
+                        </div>
+                        <p class="text-xs text-zinc-500">มีความคิดสร้างสรรค์ ออกแบบสื่อ นิทรรศการ และจัดองค์ประกอบความสวยงาม</p>
+                        <div class="w-full bg-zinc-100 rounded-full h-2 overflow-hidden">
+                            <div class="bg-zinc-900 h-2 rounded-full w-[85%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-bold text-zinc-900 flex items-center gap-2">
+                                <i class="fa-solid fa-users-gear text-zinc-700"></i> มนุษยสัมพันธ์และการเข้ากับผู้อื่น
+                            </span>
+                            <span class="text-xs font-semibold text-zinc-500">ระดับดีเยี่ยม</span>
+                        </div>
+                        <p class="text-xs text-zinc-500">ทำงานร่วมกับผู้อื่นได้ดี มีมนุษยสัมพันธ์ สื่อสารอย่างมีประสิทธิภาพ</p>
+                        <div class="w-full bg-zinc-100 rounded-full h-2 overflow-hidden">
+                            <div class="bg-zinc-900 h-2 rounded-full w-[95%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-bold text-zinc-900 flex items-center gap-2">
+                                <i class="fa-solid fa-sliders text-zinc-700"></i> การปรับตัวเข้ากับสถานการณ์ใหม่ๆ
+                            </span>
+                            <span class="text-xs font-semibold text-zinc-500">ระดับดีเยี่ยม</span>
+                        </div>
+                        <p class="text-xs text-zinc-500">เปิดรับสิ่งใหม่ ปรับตัวรวดเร็ว พร้อมแก้ปัญหาเฉพาะหน้าด้วยสติปัญญา</p>
+                        <div class="w-full bg-zinc-100 rounded-full h-2 overflow-hidden">
+                            <div class="bg-zinc-900 h-2 rounded-full w-[90%]"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-8">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center text-sm font-semibold">05</div>
+                <h2 class="text-2xl font-bold text-zinc-900 tracking-tight">ช่องทางการติดต่อ (Contact Information)</h2>
+            </div>
+
+            <div class="bg-zinc-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">ยินดีร่วมงานและแลกเปลี่ยนประสบการณ์</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            หากท่านสนใจสอบถามข้อมูลเพิ่มเติม หรือต้องการติดต่อสอบถาม สามารถติดต่อจูนได้ผ่านช่องทางด้านล่างนี้เลยค่ะ
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <!-- Phone -->
+                            <a href="tel:0962503934" class="flex items-center gap-4 p-3.5 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 transition-colors border border-zinc-700/50">
+                                <div class="w-10 h-10 rounded-lg bg-zinc-700 flex items-center justify-center text-amber-400">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-zinc-400">เบอร์โทรศัพท์</div>
+                                    <div class="font-mono text-sm font-semibold">096-250-3934</div>
+                                </div>
+                            </a>
+
+                            <!-- Email -->
+                            <a href="mailto:prayparic@gmail.com" class="flex items-center gap-4 p-3.5 rounded-xl bg-zinc-800/80 hover:bg-zinc-800 transition-colors border border-zinc-700/50">
+                                <div class="w-10 h-10 rounded-lg bg-zinc-700 flex items-center justify-center text-blue-400">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-zinc-400">อีเมล (Email)</div>
+                                    <div class="font-mono text-sm font-semibold">prayparic@gmail.com</div>
+                                </div>
+                            </a>
+
+                            <!-- Line ID -->
+                            <div class="flex items-center gap-4 p-3.5 rounded-xl bg-zinc-800/80 border border-zinc-700/50">
+                                <div class="w-10 h-10 rounded-lg bg-zinc-700 flex items-center justify-center text-emerald-400">
+                                    <i class="fa-brands fa-line"></i>
+                                </div>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <div>
+                                        <div class="text-xs text-zinc-400">LINE ID</div>
+                                        <div class="font-mono text-sm font-semibold">parichat14za</div>
+                                    </div>
+                                    <button onclick="copyToClipboard('parichat14za')" class="text-xs px-3 py-1.5 bg-zinc-700 hover:bg-zinc-600 rounded-lg text-zinc-200 transition-colors">
+                                        คัดลอก ID
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="flex items-start gap-4 p-3.5 rounded-xl bg-zinc-800/80 border border-zinc-700/50">
+                                <div class="w-10 h-10 rounded-lg bg-zinc-700 flex items-center justify-center text-rose-400 shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-zinc-400">ที่อยู่ปัจจุบัน</div>
+                                    <div class="text-sm font-medium leading-normal">
+                                        247 หมู่ 2 ตำบลช่องกุ่ม อำเภอวัฒนานคร จังหวัดสระแก้ว
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Note Box -->
+                    <div class="bg-zinc-800/50 rounded-2xl p-6 border border-zinc-700/50 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-base font-semibold mb-3 text-zinc-200 flex items-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-xs text-blue-400"></i> ส่งข้อความด่วน
+                            </h4>
+                            <p class="text-xs text-zinc-400 mb-4">คลิกปุ่มด้านล่างเพื่อเปิดระบบส่งอีเมลถึงคุณปาริชาติโดยตรง</p>
+                            
+                            <form onsubmit="sendQuickEmail(event)" class="space-y-3">
+                                <div>
+                                    <label class="block text-xs text-zinc-400 mb-1">ชื่อผู้ติดต่อ</label>
+                                    <input type="text" id="senderName" required placeholder="กรอกชื่อของคุณ" class="w-full text-xs px-3 py-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:outline-none focus:border-zinc-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-zinc-400 mb-1">ข้อความเรื่องที่ต้องการติดต่อ</label>
+                                    <textarea id="senderMsg" rows="3" required placeholder="ระบุรายละเอียด..." class="w-full text-xs px-3 py-2.5 rounded-lg bg-zinc-900 border border-zinc-700 text-white focus:outline-none focus:border-zinc-500"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-2.5 bg-white text-zinc-900 hover:bg-zinc-200 font-semibold rounded-lg text-xs transition-colors flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-paper-plane"></i> ส่งข้อความทาง Email
+                                </button>
+                            </form>
+                        </div>
+                        <div class="text-[11px] text-zinc-500 text-center pt-4">
+                            ตอบกลับรวดเร็วภายใน 24 ชม.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for GitHub Pages Setup Guide -->
+    <div id="githubModal" class="fixed inset-0 bg-black/60 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div class="flex justify-between items-center pb-4 border-b border-zinc-200 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-zinc-900 text-white flex items-center justify-center text-xl">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-zinc-900">วิธีอัปโหลดขึ้น GitHub Pages</h3>
+                        <p class="text-xs text-zinc-500">ขั้นตอนนำไฟล์นี้ไปเผยแพร่เป็นเว็บไซต์ออนไลน์ฟรี</p>
+                    </div>
+                </div>
+                <button onclick="closeGithubGuide()" class="text-zinc-400 hover:text-zinc-700 text-xl font-bold p-2">
+                    &times;
+                </button>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-zinc-700">
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
+                    <h4 class="font-bold text-zinc-900 mb-1">ขั้นตอนที่ 1: เตรียมไฟล์</h4>
+                    <p class="text-zinc-600">บันทึกโค้ดหน้านี้เป็นไฟล์ชื่อ <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">index.html</code> ไว้ในคอมพิวเตอร์ของคุณ</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
+                    <h4 class="font-bold text-zinc-900 mb-1">ขั้นตอนที่ 2: สร้าง Repository บน GitHub</h4>
+                    <p class="text-zinc-600">เข้าเว็บ <a href="https://github.com" target="_blank" class="text-blue-600 underline">GitHub.com</a> &rarr; คลิกปุ่ม <b>New Repository</b> &rarr; ตั้งชื่อเช่น <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">parichat-portfolio</code> &rarr; เลือก Public &rarr; กด <b>Create Repository</b></p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
+                    <h4 class="font-bold text-zinc-900 mb-1">ขั้นตอนที่ 3: อัปโหลดไฟล์</h4>
+                    <p class="text-zinc-600">คลิก <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">uploading an existing file</code> &rarr; ลากไฟล์ <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">index.html</code> เข้าไป &rarr; กด <b>Commit Changes</b></p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
+                    <h4 class="font-bold text-zinc-900 mb-1">ขั้นตอนที่ 4: เปิดใช้งาน GitHub Pages</h4>
+                    <p class="text-zinc-600">ไปที่เมนู <b>Settings</b> ของ Repository &rarr; เลือกหัวข้อ <b>Pages</b> (เมนูด้านซ้าย) &rarr; ตรง <i>Branch</i> ให้เลือกเป็น <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">main</code> หรือ <code class="bg-zinc-200 px-1.5 py-0.5 rounded text-zinc-900 font-mono">master</code> แล้วกด <b>Save</b></p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900">
+                    <h4 class="font-bold mb-1"><i class="fa-solid fa-circle-check"></i> สำเร็จ!</h4>
+                    <p class="text-xs">รอประมาณ 1-2 นาที คุณจะได้ลิงก์เว็บไซต์ เช่น <code class="font-mono bg-white/70 px-1.5 py-0.5 rounded">https://username.github.io/parichat-portfolio/</code> พร้อมแชร์ให้ผู้อื่นเข้าชมได้ทันที!</p>
+                </div>
+            </div>
+
+            <div class="mt-6 text-right">
+                <button onclick="closeGithubGuide()" class="px-5 py-2.5 bg-zinc-900 text-white text-xs font-semibold rounded-full hover:bg-zinc-800 transition-colors">
+                    เข้าใจแล้ว ปิดหน้าต่าง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-zinc-900 text-white px-4 py-3 rounded-2xl shadow-2xl text-xs flex items-center gap-3 transition-all duration-300 transform translate-y-20 opacity-0 z-50">
+        <i class="fa-solid fa-circle-info text-amber-400"></i>
+        <span id="toastMsg">คัดลอกสำเร็จ</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-200 bg-white py-8 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs text-zinc-500">
+                &copy; 2026 นางสาวปาริชาติ ประยงค์เพ็ชร. All Rights Reserved.
+            </div>
+            <div class="flex items-center gap-4 text-xs text-zinc-400">
+                <span>Minimal Modern Style</span>
+                <span>&bull;</span>
+                <span>Tailwind CSS</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking nav items
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // GitHub Modal Controls
+        function openGithubGuide() {
+            document.getElementById('githubModal').classList.remove('hidden');
+        }
+
+        function closeGithubGuide() {
+            document.getElementById('githubModal').classList.add('hidden');
+        }
+
+        // Copy to clipboard helper
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('คัดลอก LINE ID: ' + text + ' เรียบร้อยแล้ว');
+            } catch (err) {
+                showToast('ไม่สามารถคัดลอกได้');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Quick Mail Action
+        function sendQuickEmail(e) {
+            e.preventDefault();
+            const name = document.getElementById('senderName').value;
+            const msg = document.getElementById('senderMsg').value;
+            const mailtoUrl = `mailto:prayparic@gmail.com?subject=ข้อความติดต่อจากเว็บไซต์แฟ้มสะสมผลงาน (${encodeURIComponent(name)})&body=${encodeURIComponent(msg)}`;
+            window.location.href = mailtoUrl;
+        }
+    </script>
+</body>
+</html>
